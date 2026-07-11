@@ -18,6 +18,7 @@ class Keterlambatan extends Model
         'user_id',
         'tanggal',
         'alasan',
+        'keterangan',
         'tahun_ajaran',
         'semester',
         'keterangan', // Tambahkan ini jika belum ada

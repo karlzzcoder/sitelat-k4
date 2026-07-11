@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="icon" href="{{ asset('images/Logo SMKN 4 Bogor.png') }}" type="image/png">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -38,17 +39,16 @@
             // 1. Filter Ketik Nama
             const matchSearch = s.name.toLowerCase().includes(this.searchQuery.toLowerCase());
             
-            // 2. Filter Angkatan (Mengecek apakah mengandung X, XI, atau XII)
+            // 2. Filter Angkatan (Mengecek kelas persis)
             let targetAngkatan = this.selectedAngkatan;
-            if (targetAngkatan === 'X' && !kelasStr.includes('X')) {
-                if (!kelasStr.startsWith('10')) return false;
-            } else if (targetAngkatan === 'XI' && !kelasStr.includes('XI')) {
-                if (!kelasStr.startsWith('11')) return false;
-            } else if (targetAngkatan === 'XII' && !kelasStr.includes('XII')) {
-                if (!kelasStr.startsWith('12')) return false;
-            } else if (targetAngkatan !== 'Semua' && !kelasStr.includes(targetAngkatan)) {
-                return false;
-            }
+            if (targetAngkatan !== 'Semua') {
+            
+            let prefixKelas = kelasStr.split(' ')[0]; 
+
+            if (targetAngkatan === 'X' && prefixKelas !== 'X' && prefixKelas !== '10') return false;
+            if (targetAngkatan === 'XI' && prefixKelas !== 'XI' && prefixKelas !== '11') return false;
+            if (targetAngkatan === 'XII' && prefixKelas !== 'XII' && prefixKelas !== '12') return false;
+}
             
             // 3. Filter Jurusan (PPLG, TJKT, dll)
             const matchJurusan = this.selectedJurusan === 'Semua' || kelasStr.includes(this.selectedJurusan);

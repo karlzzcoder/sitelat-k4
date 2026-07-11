@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="icon" href="{{ asset('images/Logo SMKN 4 Bogor.png') }}" type="image/png">
+
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -22,6 +23,9 @@
             
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-extrabold text-indigo-600 tracking-tight mb-2">SiTelat K4</h1>
+                 <div class="flex justify-center mb-6">
+    <img src="{{ asset('images/Logo SMKN 4 Bogor.png') }}" alt="Logo SMKN 4 Bogor" class="h-24 w-auto">
+</div>
                 <p class="text-sm text-slate-400 px-4">Sistem Pencatatan Keterlambatan Siswa SMKN 4 Bogor</p>
             </div>
             
@@ -60,7 +64,7 @@
         </div>
         
         <div class="text-center text-xs text-slate-400 mt-6">
-            &copy; 2026 Tim Pengembang SiTelat K4
+            &copy; 2026 Tim Pengembang SiTelat K4 <br>Ken Raya Setiawan & Muhamad Davi Najamudin Ansori
         </div>
     </div>
 

@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="icon" href="{{ asset('images/Logo SMKN 4 Bogor.png') }}" type="image/png">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
@@ -385,7 +386,7 @@
     </div>
 
     <footer class="text-center text-xs text-slate-400 py-6 border-t border-slate-100 bg-white mt-auto">
-        &copy; 2026 Tim Pengembang SiTelat K4
+        &copy; 2026 Tim Pengembang SiTelat K4 <br>Ken Raya Setiawan & Muhamad Davi Najamudin Ansori
     </footer>
 
 </body>

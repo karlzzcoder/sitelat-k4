@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="{{ asset('images/Logo SMKN 4 Bogor.png') }}" type="image/png">
     
     <!-- jQuery and Select2 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -63,8 +64,8 @@
         </div>
     </header>
 
-    <main class="flex-grow max-w-2xl mx-auto w-full px-6 py-8">
-        <div class="bg-white border border-slate-200 rounded-3xl p-8 shadow-xl shadow-slate-100/50">
+    <main class="flex-grow flex items-center justify-center max-w-2xl mx-auto w-full px-6 py-8">
+        <div class="w-full bg-white border border-slate-200 rounded-3xl p-8 shadow-xl shadow-slate-100/50">
             
             <div class="mb-6">
                 <h2 class="text-xl font-bold text-slate-800">Form Keterlambatan</h2>
@@ -148,7 +149,7 @@
     </main>
 
     <footer class="text-center text-xs text-slate-400 py-6 border-t border-slate-100 bg-white">
-        &copy; 2026 Tim Pengembang SiTelat K4
+        &copy; 2026 Tim Pengembang SiTelat K4 <br>Ken Raya Setiawan & Muhamad Davi Najamudin Ansori
     </footer>
 
     <!-- Select2 Initializer -->

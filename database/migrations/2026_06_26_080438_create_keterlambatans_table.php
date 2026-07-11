@@ -17,9 +17,9 @@ return new class extends Migration
         // Relasi ke tabel siswa dan users
         $table->foreignId('siswa_id')->constrained('siswa')->onDelete('cascade');
         $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-        
         $table->date('tanggal');
         $table->text('alasan');
+        $table->text('keterangan')->nullable();
         $table->string('tahun_ajaran');
         $table->string('semester');
         $table->text('penanganan')->nullable(); // Nullable karena awal input pasti kosong
