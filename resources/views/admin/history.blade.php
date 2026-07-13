@@ -135,15 +135,16 @@
                                                     <div x-show="openTanggal" x-collapse class="p-2 bg-slate-50/50 space-y-1.5 border-t border-slate-100">
                                                         @foreach($item['detail'] as $detail)
                                                             <div @click="
-                                                                    selectedData = {
-                                                                        nama: '{{ $detail->siswa->nama ?? 'Siswa Terhapus' }}',
-                                                                        kelas: '{{ $detail->siswa->kelas ?? '-' }}',
-                                                                        tanggal: '{{ $tanggalFormatted }}',
-                                                                        alasan: '{{ $detail->alasan }}',
-                                                                        tahun_ajaran: '{{ $detail->tahun_ajaran ?? '-' }}',
-                                                                        semester: '{{ $detail->semester == '1' ? 'Ganjil' : 'Genap' }}',
-                                                                        penanganan: '{{ $detail->penanganan ?? '' }}'
-                                                                    };
+                                                                   selectedData = {
+                                                                    nama: '{{ $detail->siswa->nama ?? 'Siswa Terhapus' }}',
+                                                                    kelas: '{{ $detail->siswa->kelas ?? '-' }}',
+                                                                    tanggal: '{{ $tanggalFormatted }}',
+                                                                    alasan: '{{ $detail->alasan }}',
+                                                                    tahun_ajaran: '{{ $detail->tahun_ajaran ?? '-' }}',
+                                                                    semester: '{{ $detail->semester == '1' ? 'Ganjil' : 'Genap' }}',
+                                                                    penanganan: '{{ $detail->penanganan ?? '' }}',
+                                                                    keterangan: '{{ $detail->keterangan ?? '' }}'
+                                                                };
                                                                     showModal = true;
                                                                  "
                                                                  class="p-2.5 bg-white border border-slate-150 rounded-lg flex justify-between items-center shadow-sm cursor-pointer hover:border-indigo-300 active:scale-[0.99] transition-all">
@@ -248,34 +249,47 @@
                         </div>
                     </div>
 
-                    <div class="p-3.5 bg-amber-50/60 rounded-xl border border-amber-200/70">
-                        <span class="text-[9px] font-extrabold text-amber-800 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                            <i class="fa-solid fa-comment-dots text-[10px]"></i> Catatan Tambahan / Penanganan
-                        </span>
-                        <p class="text-xs font-semibold leading-relaxed" 
-                           :class="selectedData.penanganan ? 'text-slate-700 font-medium' : 'text-slate-400 italic font-normal'" 
-                           x-text="selectedData.penanganan ? selectedData.penanganan : 'Tidak ada catatan tambahan atau penanganan khusus yang dimasukkan.'">
-                        </p>
+                    <div class="p-3.5 bg-amber-50/60 rounded-xl border border-amber-200/70 space-y-3">
+                        <div>
+                            <span class="text-[9px] font-extrabold text-amber-800 uppercase tracking-wider block mb-1 flex items-center gap-1">
+                                <i class="fa-solid fa-comment-dots text-[10px]"></i> Catatan Tambahan (OSIS)
+                            </span>
+                            <p class="text-xs font-semibold leading-relaxed" 
+                               :class="selectedData.keterangan ? 'text-slate-700 font-medium' : 'text-slate-400 italic font-normal'" 
+                               x-text="selectedData.keterangan ? selectedData.keterangan : 'Tidak ada catatan tambahan.'">
+                            </p>
+                        </div>
+                        
+                        <div class="border-t border-amber-200/40 pt-2">
+                            <span class="text-[9px] font-extrabold text-indigo-800 uppercase tracking-wider block mb-1 flex items-center gap-1">
+                                <i class="fa-solid fa-user-shield text-[10px]"></i> Penanganan Khusus (Walas)
+                            </span>
+                            <p class="text-xs font-semibold leading-relaxed" 
+                               :class="selectedData.penanganan ? 'text-slate-700 font-medium' : 'text-slate-400 italic font-normal'" 
+                               x-text="selectedData.penanganan ? selectedData.penanganan : 'Belum ada penanganan khusus.'">
+                            </p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="p-4 border-t border-slate-100 bg-slate-50 text-center">
+                </div> <div class="p-4 border-t border-slate-100 bg-slate-50 text-center">
                     <button @click="showModal = false" class="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-bold shadow-sm transition-all">
                         Tutup Detail
                     </button>
                 </div>
             </div>
         </div>
-
-        <div class="absolute bottom-0 left-0 right-0 h-20 bg-white border-t border-slate-100 px-14 flex justify-between items-center z-30 shadow-[0_-4px_12px_rgba(0,0,0,0.03)]">
-            <a href="/admin-osis" class="flex flex-col items-center gap-1 text-slate-400 hover:text-indigo-600 cursor-pointer transition-all">
-                <i class="fa-solid fa-house-chimney text-lg"></i>
+<!-- NAVBAR BAWAH (Icon disamain persis sama dashboard) -->
+        <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto h-20 bg-white border-t border-slate-100 px-14 flex justify-between items-center z-40 shadow-[0_-4px_12px_rgba(0,0,0,0.03)]">
+            
+            <a href="/admin-osis" class="flex flex-col items-center gap-1 text-slate-300 hover:text-indigo-600 cursor-pointer transition-all">
+                <i class="fa-solid fa-square-plus text-xl"></i>
                 <span class="text-[10px] font-bold">Beranda</span>
             </a>
+            
             <div class="flex flex-col items-center gap-1 text-indigo-600 cursor-pointer">
-                <i class="fa-solid fa-clock-rotate-left text-lg"></i>
+                <i class="fa-solid fa-clock-rotate-left text-xl"></i>
                 <span class="text-[10px] font-bold">Riwayat</span>
             </div>
+            
         </div>
     </div>
 
