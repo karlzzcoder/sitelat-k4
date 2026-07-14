@@ -82,7 +82,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('keterlambatan.store') }}" method="POST" class="space-y-6">
+            <form id="formInput" action="{{ route('keterlambatan.store') }}" method="POST" class="space-y-6">
                 @csrf
 
                 <!-- Filters & Autocomplete -->
@@ -139,9 +139,9 @@
                        class="flex-1 bg-slate-100 hover:bg-slate-200 active:scale-[0.99] text-slate-600 text-center font-semibold text-sm rounded-xl py-3 px-4 transition-all duration-200">
                         Batal
                     </a>
-                    <button type="submit" 
-                        class="flex-1 bg-indigo-600 hover:bg-indigo-700 active:scale-[0.99] text-white font-semibold text-sm rounded-xl py-3 px-4 shadow-lg shadow-indigo-600/10 hover:shadow-indigo-600/20 transition-all duration-200">
-                        Kirim Data
+                    <button id="btnSubmit" type="submit" 
+                    class="flex-1 bg-indigo-600 hover:bg-indigo-700 active:scale-[0.99] text-white font-semibold text-sm rounded-xl py-3 px-4 shadow-lg shadow-indigo-600/10 hover:shadow-indigo-600/20 transition-all duration-200">
+                    Kirim Data
                     </button>
                 </div>
             </form>
@@ -152,10 +152,11 @@
         &copy; 2026 Tim Pengembang SiTelat K4 <br>Ken Raya Setiawan & Muhamad Davi Najamudin Ansori
     </footer>
 
-    <!-- Select2 Initializer -->
-    <script>
+   <script>
+        // =========================================================
+        // 1. SCRIPT PENCARIAN PINTAR SISWA (SELECT2 AJAX)
+        // =========================================================
         $(document).ready(function() {
-            // Inisialisasi Select2 AJAX
             $('#siswa_id').select2({
                 ajax: {
                     url: '{{ route("siswa.search") }}',
@@ -194,6 +195,23 @@
             $('#kelas_filter, #jurusan_filter').change(function() {
                 $('#siswa_id').val(null).trigger('change');
             });
+        });
+
+        // =========================================================
+        // 2. SCRIPT PENCEGAH DOUBLE SUBMIT (SPAM CLICK)
+        // =========================================================
+        document.getElementById('formInput').addEventListener('submit', function() {
+            let btn = document.getElementById('btnSubmit');
+            
+            // Matikan tombol biar gak bisa diklik lagi
+            btn.disabled = true;
+            
+            // Ubah tampilan tombol jadi abu-abu/redup
+            btn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+            btn.classList.add('bg-slate-400', 'cursor-not-allowed', 'opacity-70');
+            
+            // Ganti teks tombol jadi ada icon loadingnya
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Sedang Menyimpan...';
         });
     </script>
 </body>
