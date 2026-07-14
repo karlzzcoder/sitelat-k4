@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="icon" href="{{ asset('images/Logo SMKN 4 Bogor.png') }}" type="image/png">
 
     <style>
@@ -24,8 +27,8 @@
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-extrabold text-indigo-600 tracking-tight mb-2">SiTelat K4</h1>
                  <div class="flex justify-center mb-6">
-    <img src="{{ asset('images/Logo SMKN 4 Bogor.png') }}" alt="Logo SMKN 4 Bogor" class="h-24 w-auto">
-</div>
+                    <img src="{{ asset('images/Logo SMKN 4 Bogor.png') }}" alt="Logo SMKN 4 Bogor" class="h-24 w-auto">
+                </div>
                 <p class="text-sm text-slate-400 px-4">Sistem Pencatatan Keterlambatan Siswa SMKN 4 Bogor</p>
             </div>
             
@@ -50,8 +53,14 @@
                 
                 <div>
                     <label for="password" class="block text-sm font-semibold text-slate-600 mb-1.5">Kata Sandi</label>
-                    <input type="password" id="password" name="password" placeholder="••••••••" required
-                        class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none transition-all duration-200">
+                    <div class="relative">
+                        <input type="password" id="password" name="password" placeholder="••••••••" required
+                            class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 pr-12 text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none transition-all duration-200">
+                        
+                        <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-indigo-600 transition-colors focus:outline-none">
+                            <i class="fa-regular fa-eye" id="eyeIcon"></i>
+                        </button>
+                    </div>
                 </div>
                 
                 <div class="pt-2">
@@ -68,5 +77,25 @@
         </div>
     </div>
 
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const password = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
+
+        togglePassword.addEventListener('click', function (e) {
+            // Ubah tipe input dari password ke text, atau sebaliknya
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            
+            // Ubah ikon mata (terbuka / tercoret)
+            if (type === 'password') {
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            } else {
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            }
+        });
+    </script>
 </body>
 </html>
